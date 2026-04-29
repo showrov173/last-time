@@ -1,0 +1,315 @@
+/* ================= GLOBAL STYLES & TYPOGRAPHY ================= */
+@import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Hind Siliguri', sans-serif;
+}
+
+body {
+    background: #f1f5f9;
+    color: #1e293b;
+    overflow-x: hidden;
+}
+
+/* ================= LAYOUT DESIGN ================= */
+.pos-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar (Desktop) */
+.sidebar {
+    width: 250px;
+    background: #0f172a;
+    color: white;
+    position: fixed;
+    height: 100vh;
+    overflow-y: auto;
+    transition: 0.3s ease-in-out;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar .logo {
+    padding: 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    position: sticky;
+    top: 0;
+    background: #0f172a;
+    z-index: 10;
+}
+
+.nav-menu {
+    list-style: none;
+    padding: 10px 0;
+    flex: 1;
+}
+
+.nav-menu li {
+    padding: 12px 20px;
+    cursor: pointer;
+    border-left: 4px solid transparent;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #cbd5e1;
+    font-weight: 500;
+}
+
+.nav-menu li:hover, .nav-menu li.active {
+    background: #1e293b;
+    color: #38bdf8;
+    border-left-color: #38bdf8;
+}
+
+/* Main Content (Desktop) */
+.main-content {
+    margin-left: 250px;
+    flex: 1;
+    padding: 25px;
+    width: calc(100% - 250px);
+    transition: 0.3s;
+}
+
+.header-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+/* ================= CARDS & GRIDS ================= */
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    margin-bottom: 20px;
+    overflow-x: auto; /* টেবিল মোবাইলের বাইরে যাবে না */
+}
+
+.grid-container { display: grid; gap: 20px; }
+.grid-2 { grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); }
+.grid-3 { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+.summary-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
+
+/* ================= TABLES ================= */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px; /* মোবাইলে টেবিল ছোট হবে না, স্ক্রল হবে */
+}
+
+.data-table th, .data-table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+.data-table th {
+    background: #f8fafc;
+    color: #475569;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+/* ================= FORMS & BUTTONS ================= */
+input, select, textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    outline: none;
+    transition: 0.3s;
+    font-size: 15px;
+}
+
+input:focus, select:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59,130,246,0.2);
+}
+
+.btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 14px;
+}
+
+.btn:hover { opacity: 0.9; transform: translateY(-1px); }
+.btn-primary { background: #3b82f6; color: white; }
+.btn-success { background: #10b981; color: white; }
+.btn-danger { background: #ef4444; color: white; }
+.btn-warning { background: #f59e0b; color: white; }
+.btn-outline { background: transparent; border: 2px solid #cbd5e1; color: #475569; }
+.btn-small { padding: 6px 12px; font-size: 12px; }
+
+/* ================= BILLING SECTION ================= */
+.billing-container {
+    display: flex;
+    gap: 25px;
+    align-items: flex-start;
+}
+.billing-left { flex: 2; }
+.billing-right { 
+    flex: 1; 
+    position: sticky; 
+    top: 20px; 
+    background: white; 
+    padding: 20px; 
+    border-radius: 12px; 
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.grand-total {
+    background: #1e3a8a;
+    color: #fff;
+    padding: 15px;
+    text-align: center;
+    border-radius: 8px;
+    margin: 15px 0;
+    font-size: 24px;
+}
+
+/* ================= SWITCH TOGGLE ================= */
+.switch { position: relative; display: inline-block; width: 46px; height: 24px; }
+.switch input { opacity: 0; width: 0; height: 0; }
+.slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #cbd5e1; transition: .4s; border-radius: 24px; }
+.slider:before { position: absolute; content: ""; height: 18px; width: 18px; left: 3px; bottom: 3px; background-color: white; transition: .4s; border-radius: 50%; }
+input:checked + .slider { background-color: #10b981; }
+input:checked + .slider:before { transform: translateX(22px); }
+
+/* ================= MODALS ================= */
+.modal {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(15, 23, 42, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100000;
+    padding: 20px;
+    backdrop-filter: blur(4px);
+}
+.modal.hidden { display: none !important; }
+.modal-content {
+    background: white;
+    border-radius: 16px;
+    max-height: 90vh;
+    overflow-y: auto;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+}
+
+/* ================= UTILS ================= */
+.hidden { display: none !important; }
+.text-center { text-align: center; }
+
+/* ================= RESPONSIVE DESIGN (MAGIC HAPPENS HERE) ================= */
+
+/* For Tablets */
+@media (max-width: 1024px) {
+    .billing-container { flex-direction: column; }
+    .billing-right { position: static; width: 100%; }
+    .dashboard-widgets { grid-template-columns: 1fr !important; }
+}
+
+/* For Mobile Phones */
+@media (max-width: 768px) {
+    /* 사이ডবারকে মোবাইলের নিচে অ্যাপের Bottom Menu বানানো */
+    .sidebar {
+        width: 100%;
+        height: 70px;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        top: auto;
+        flex-direction: row;
+        z-index: 99999;
+        border-top: 1px solid #1e293b;
+        padding-bottom: 0 !important;
+        box-shadow: 0 -4px 10px rgba(0,0,0,0.1);
+    }
+    
+    /* লোগো ও ব্র্যান্ডিং মোবাইলে নিচে দেখাবে না */
+    .sidebar .logo, #sidebar-app-branding { display: none !important; }
+    
+    .nav-menu {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        overflow-x: auto;
+        white-space: nowrap;
+        align-items: center;
+        padding: 0;
+        margin: 0;
+        background: #0f172a;
+    }
+    
+    .nav-menu::-webkit-scrollbar { display: none; } /* স্ক্রলবার হাইড */
+    
+    .nav-menu li {
+        flex: 0 0 auto;
+        flex-direction: column;
+        justify-content: center;
+        gap: 5px;
+        font-size: 11px;
+        padding: 10px 15px;
+        border-left: none;
+        border-bottom: 3px solid transparent;
+        color: #94a3b8;
+    }
+    
+    .nav-menu li i { font-size: 20px; margin: 0; }
+    .nav-menu li.active { border-bottom-color: #38bdf8; background: #1e293b; color: #38bdf8; }
+
+    /* মেইন কন্টেন্ট মোবাইলের জন্য ফুল স্ক্রিন করা */
+    .main-content {
+        margin-left: 0;
+        width: 100%;
+        padding: 15px;
+        padding-bottom: 90px !important; /* নিচে মেনুর জন্য জায়গা ছাড়া */
+    }
+    
+    .header-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .header-bar > div { width: 100%; text-align: left !important; }
+    
+    .summary-cards { grid-template-columns: repeat(2, 1fr); }
+    .profit-card { grid-column: span 2; }
+    
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    
+    .modal-content { max-width: 95%; margin: 10px; }
+}
+
+/* ================= PRINT STYLES ================= */
+@media print {
+    .no-print, .sidebar, .header-bar, .modal { display: none !important; }
+    .main-content { margin: 0 !important; width: 100% !important; padding: 0 !important; }
+    body { background: white; color: black; }
+    .card { box-shadow: none !important; border: none !important; padding: 0 !important; }
+    .print-only { display: block !important; }
+}
+.print-only { display: none; }
